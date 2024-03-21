@@ -1,4 +1,4 @@
-//TEST MAX LIMITS return to 50 deg. iterative
+//TEST MAX LIMITS return to 50 deg. iterative, Arduino
 
 #include <Servo.h>
 
