@@ -1,0 +1,38 @@
+//TEST MAX LIMITS return to 50 deg. iterative
+
+#include <Servo.h>
+
+const int NUM_SERVOS = 5; // Number of servos
+Servo servos[NUM_SERVOS]; // Array to store servo objects
+
+const int servoPins[NUM_SERVOS] = {9, 10, 11, 12, 13}; // Pins for each servo
+
+void setup() {
+  // Attach each servo to its respective pin
+  for (int i = 0; i < NUM_SERVOS; i++) {
+    servos[i].attach(servoPins[i]);
+  }
+}
+
+void loop() {
+  // Move each servo gradually to angle 180
+  for (int angle = 0; angle <= 180; angle += 1) {
+    // Iterate through each servo and set its angle
+    for (int i = 0; i < NUM_SERVOS; i++) {
+      servos[i].write(angle);
+    }
+    delay(10);
+  }
+
+  // Move each servo gradually back to angle 50
+  for (int angle = 180; angle >= 50; angle -= 1) {
+    // Iterate through each servo and set its angle
+    for (int i = 0; i < NUM_SERVOS; i++) {
+      servos[i].write(angle);
+    }
+    delay(10);
+  }
+
+  // Stop looping after one iteration
+  while (true) {}
+}
