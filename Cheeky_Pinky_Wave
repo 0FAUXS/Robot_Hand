@@ -1,0 +1,36 @@
+#include <Servo.h>
+
+Servo servo1;
+
+void setup() {
+  servo1.attach(9);
+}
+
+void loop() {
+  // Move servo1 from 50 to 120 degrees
+  for (int angle = 50; angle <= 120; angle += 1) {
+    servo1.write(angle);
+    delay(10); // Adjust delay for desired speed
+  }
+
+  // Bob up and down between 120 and 100 degrees four times
+  for (int bob = 0; bob < 4; bob++) {
+    for (int angle = 120; angle >= 100; angle -= 1) {
+      servo1.write(angle);
+      delay(10); // Adjust delay for desired speed
+    }
+    for (int angle = 100; angle <= 120; angle += 1) {
+      servo1.write(angle);
+      delay(10); // Adjust delay for desired speed
+    }
+  }
+
+  // Return servo1 to 90 degrees
+  servo1.write(90);
+  delay(1000); // Delay to observe the final position
+
+  // Stop the loop after executing the sequence
+  while (true) {
+    // Do nothing
+  }
+}
